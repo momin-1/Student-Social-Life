@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="500dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/round_corner"
+
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+            android:text="WELCOME, "
+        android:textStyle="bold"
+        android:textSize="20sp" />
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/image"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView"
+        android:background="@drawable/logo"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@id/image"
+        android:id="@+id/text"
+        android:gravity="center"
+        android:text="If you click the Accept button, you are considered to agree to the Terms of Service and Privacy Policy"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/text"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+    <Button
+        android:id="@+id/accept"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_centerHorizontal="true"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+
+
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:backgroundTint="@color/gray"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+
+        android:text="Accept"
+        android:textStyle="bold"
+        app:cornerRadius = "40dp"
+        ></Button>
+
+
+        <Button
+            android:id="@+id/reject"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_centerHorizontal="true"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+
+
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/white"
+
+            android:text="Reject"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:cornerRadius = "40dp"
+            ></Button>
+
+
+
+    </LinearLayout>
+</RelativeLayout>

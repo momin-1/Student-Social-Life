@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="8"
+    tools:context=".HomeScreen"
+    android:background="@drawable/gradient_color"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.28"
+        android:text="Home Page"
+        android:textSize="30sp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:textColor="@color/white"
+
+        />
+
+    <View
+        android:layout_below="@+id/signin"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.02"
+        android:id="@+id/line"
+        android:background="@color/white"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:paddingBottom="30dp"
+        android:paddingLeft="30dp"
+        android:paddingEnd="30dp"
+        android:paddingTop="50dp"
+        >
+
+        <ImageButton
+            android:id="@+id/subject_groups"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/round_corner"
+            android:src="@drawable/subject_groups"
+            android:scaleType="fitXY"
+
+            />
+
+        <ImageButton
+            android:id="@+id/clubs"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/round_corner"
+            android:src="@drawable/clubs"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="20dp"
+
+
+            />
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:paddingBottom="30dp"
+        android:paddingLeft="30dp"
+        android:paddingEnd="30dp"
+        android:paddingTop="50dp"
+        >
+
+        <ImageButton
+            android:id="@+id/internships"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/round_corner"
+            android:src="@drawable/internships"
+            android:scaleType="fitXY"
+
+            />
+
+        <ImageButton
+            android:id="@+id/your_profile"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/round_corner"
+            android:src="@drawable/your_profile"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="20dp"
+
+
+            />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"
+        android:weightSum="5"
+        android:orientation="horizontal"
+        android:background="#ECECEC"
+        >
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/home"
+            android:layout_weight="1"
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_round_home_24"
+            ></ImageButton>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/football"
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_twotone_sports_soccer_24"
+            android:drawableTint="@color/blue"
+            ></ImageButton>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/groups"
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_outline_groups_24"
+            ></ImageButton>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/notifcations"
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_outline_notifications_24"
+            ></ImageButton>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/profile"
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_outline_person_24"
+            ></ImageButton>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

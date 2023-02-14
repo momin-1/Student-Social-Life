@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="@android:color/transparent"
+
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="10"
+        android:layout_margin="5dp"
+
+        android:orientation="horizontal">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_weight="2"
+            android:id="@+id/profile_image"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            app:civ_border_width="2dp"
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7.3"
+            android:orientation="vertical"
+            android:weightSum="2"
+            >
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:layout_marginLeft="3dp"
+            android:fontFamily="sans-serif-thin"
+            android:textFontWeight="900"
+android:textStyle="bold"
+            android:text="Football Club"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:layout_marginLeft="3dp"
+                android:fontFamily="sans-serif-thin"
+                android:textFontWeight="500"
+                android:textStyle="italic"
+
+                android:text="WSSL Member"/>
+
+
+        </LinearLayout>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:id="@+id/status"
+                android:layout_weight="0.7"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/circle"
+                android:textColor="@color/white"
+android:layout_margin="2dp"
+
+
+                />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

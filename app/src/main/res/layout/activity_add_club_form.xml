@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="8"
+    tools:context=".HomeScreen"
+    android:background="@drawable/gradient_color"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.48"
+        android:padding="10dp"
+        android:weightSum="10"
+        >
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:id="@+id/back"
+            android:layout_weight="1"
+            android:background="@drawable/ic_baseline_arrow_back_ios_new_24"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:id="@+id/chat_name"
+            android:text="Add an Internship"
+            android:textSize="30sp"
+            android:fontFamily="serif"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+
+            />
+
+
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_below="@+id/signin"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.02"
+        android:id="@+id/line"
+        android:background="@color/white"/>
+
+    <View
+        android:layout_below="@+id/signin"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        />
+
+    <ImageButton
+
+        android:scaleType="centerCrop"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:background="@drawable/ic_baseline_add_a_photo_24"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:id="@+id/dp"
+        />
+
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="0.7"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+
+        android:background="@drawable/round_corner"
+        android:padding="10dp"
+        android:hint="Club Name (Must be unique)"
+        android:visibility="visible"/>
+
+    <EditText
+        android:id="@+id/interests"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="0.7"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+
+        android:background="@drawable/round_corner"
+        android:padding="10dp"
+        android:hint="Interests"
+        android:visibility="visible"/>
+
+
+
+    <Button
+        android:id="@+id/add_club"
+        android:layout_below="@+id/remember"
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="0.4"
+        android:height="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:backgroundTint="@color/gray"
+        android:textColor="@color/white"
+
+        android:text="Add Club"
+        android:textStyle="bold"
+        app:cornerRadius = "40dp"
+        ></Button>
+
+
+
+
+
+
+
+</LinearLayout>

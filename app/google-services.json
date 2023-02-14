@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "80101441262",
+    "project_id": "w-app-46ce9",
+    "storage_bucket": "w-app-46ce9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80101441262:android:0ba7183e6cf291edc17dff",
+        "android_client_info": {
+          "package_name": "com.smd.wssl_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80101441262-erpvam3pfpam6gg2q0uiis69ofu4a4c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0UnC81oZnOKKQuV95En14ETyq0tmsY-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80101441262-erpvam3pfpam6gg2q0uiis69ofu4a4c6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

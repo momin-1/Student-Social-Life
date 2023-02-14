@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="8"
+    tools:context=".HomeScreen"
+    android:background="@drawable/gradient_color"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.28"
+        android:weightSum="6"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_weight="5"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="Admin Home Page"
+        android:textSize="30sp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:textColor="@color/white"
+
+        />
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_baseline_logout_24"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_below="@+id/signin"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.02"
+        android:id="@+id/line"
+        android:background="@color/white"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:paddingBottom="30dp"
+        android:paddingLeft="30dp"
+        android:paddingEnd="30dp"
+        android:paddingStart="30dp"
+        android:gravity="center"
+        android:paddingRight="30dp"
+        android:paddingTop="50dp"
+        >
+
+        <Button
+            android:id="@+id/add_club"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_corner"
+            android:text="Add\n Club"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+
+            />
+
+        <Button
+            android:id="@+id/add_internship"
+
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_corner"
+            android:text="Add\nInternship"
+
+            android:textColor="@color/black"
+            android:textSize="18sp"
+
+
+            />
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

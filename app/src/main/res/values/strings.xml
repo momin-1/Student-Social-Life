@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WSSL_App</string>
+    <string name="underlined_signup"><u>Sign up</u></string>
+    <string name="underlined_signin"><u>Sign in</u></string>
+    <string name="underlined_text"><u>%s</u></string>
+
+
+</resources>
