@@ -23,7 +23,6 @@
         />
 
     <View
-        android:layout_below="@+id/signin"
         android:layout_width="match_parent"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
@@ -32,18 +31,75 @@
         android:layout_weight="0.02"
         android:id="@+id/line"
         android:background="@color/white"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+
+        />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+
+        android:layout_weight=".5"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:orientation="horizontal"
         android:weightSum="2"
-        android:paddingBottom="30dp"
+       android:layout_gravity="center"
+
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:layout_marginStart="20dp"
+            android:text="Subject Groups"
+            android:gravity="center"
+            android:textColor="@color/white"
+
+            />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+         android:text="Clubs"
+            android:gravity="center"
+android:layout_marginEnd="20dp"
+            android:textSize="17sp"
+
+            android:textColor="@color/white"
+
+
+            />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:paddingBottom="10dp"
         android:paddingLeft="30dp"
         android:paddingEnd="30dp"
-        android:paddingTop="50dp"
+        android:paddingTop="10dp"
+android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="30dp"
         >
 
         <ImageButton
@@ -51,7 +107,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/round_corner"
+            android:background="@drawable/round_corner_2"
             android:src="@drawable/subject_groups"
             android:scaleType="fitXY"
 
@@ -63,7 +119,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/round_corner"
+            android:background="@drawable/round_corner_2"
             android:src="@drawable/clubs"
             android:scaleType="fitXY"
             android:layout_marginLeft="20dp"
@@ -80,13 +136,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:weightSum="2"
-        android:paddingBottom="30dp"
+        android:paddingBottom="10dp"
         android:paddingLeft="30dp"
         android:paddingEnd="30dp"
-        android:paddingTop="50dp"
+        android:paddingTop="10dp"
+        android:layout_marginEnd="30dp"
+     android:layout_marginStart="30dp"
         >
 
         <ImageButton
@@ -94,7 +152,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/round_corner"
+            android:background="@drawable/round_corner_2"
             android:src="@drawable/internships"
             android:scaleType="fitXY"
 
@@ -106,7 +164,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/round_corner"
+            android:background="@drawable/round_corner_2"
             android:src="@drawable/your_profile"
             android:scaleType="fitXY"
             android:layout_marginLeft="20dp"
@@ -115,9 +173,61 @@
             />
 
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".5"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:text="Internships"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+
+            />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Profile"
+            android:gravity="center"
+android:layout_marginEnd="20dp"
+            android:textSize="17sp"
+
+            android:textColor="@color/white"
+
+
+            />
+
+
 
     </LinearLayout>
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"
+
+       />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -132,16 +242,20 @@
             android:layout_height="match_parent"
             android:id="@+id/home"
             android:layout_weight="1"
-            android:layout_margin="15dp"
-            android:background="@drawable/ic_round_home_24"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"            android:background="@drawable/ic_round_home_24"
             ></ImageButton>
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/football"
-            android:layout_margin="15dp"
-            android:background="@drawable/ic_twotone_sports_soccer_24"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"            android:background="@drawable/ic_twotone_sports_soccer_24"
             android:drawableTint="@color/blue"
             ></ImageButton>
         <ImageButton
@@ -149,24 +263,31 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/groups"
-            android:layout_margin="15dp"
-            android:background="@drawable/ic_outline_groups_24"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"            android:background="@drawable/ic_outline_groups_24"
             ></ImageButton>
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/notifcations"
-            android:layout_margin="15dp"
-            android:background="@drawable/ic_outline_notifications_24"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"            android:background="@drawable/ic_baseline_school_24"
             ></ImageButton>
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/profile"
-            android:layout_margin="15dp"
-            android:background="@drawable/ic_outline_person_24"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"            android:background="@drawable/ic_outline_person_24"
             ></ImageButton>
 
 

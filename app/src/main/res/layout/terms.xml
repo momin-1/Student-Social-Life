@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="700dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerHorizontal="true"
+android:background="@color/blue"
+
+    android:padding="10dp">
+
+
+<ImageButton
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:background="@drawable/ic_baseline_arrow_back_ios_new_24"
+    android:id="@+id/back"
+    android:layout_marginTop="10dp"
+    />
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/back"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="Terms of service"
+        android:textSize="20sp" />
+
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="480dp"
+       android:layout_marginTop="20dp"
+       android:layout_below="@+id/textView1"
+       android:background="@drawable/terms"
+       />
+</RelativeLayout>

@@ -9,32 +9,32 @@
     tools:context=".HomeScreen"
     android:background="@drawable/gradient_color"
     >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="0.80"
-android:weightSum="10"
-    >
-    <ImageButton
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:id="@+id/back"
-        android:layout_weight="1"
-        android:background="@drawable/ic_baseline_arrow_back_ios_new_24"/>
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="9"
-        android:text="Clubs"
-        android:textSize="30sp"
-        android:fontFamily="serif"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        android:textColor="@color/white"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.80"
+        android:weightSum="10"
+        >
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:id="@+id/back"
+            android:layout_weight="1"
+            android:background="@drawable/ic_baseline_arrow_back_ios_new_24"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:text="Clubs"
+            android:textSize="30sp"
+            android:fontFamily="serif"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:textColor="@color/white"
 
-        />
-</LinearLayout>
+            />
+    </LinearLayout>
     <View
         android:layout_below="@+id/signin"
         android:layout_width="match_parent"
@@ -80,107 +80,101 @@ android:weightSum="10"
         android:textStyle="bold"
         android:fontFamily="sans-serif-medium"
         android:textColor="@color/white"
-android:textFontWeight="500"
+        android:textFontWeight="500"
 
         />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1.15"
-    android:layout_marginTop="10dp"
-
-    android:layout_marginRight="20dp"
-    android:layout_marginLeft="20dp"
-    android:padding="10dp"
-    android:weightSum="3">
-
-    <ImageButton
-        android:id="@+id/club_1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/round_corner"
-        android:src="@drawable/club_1"
-        android:scaleType="fitXY"
-
-        />
-
-    <ImageButton
-        android:id="@+id/club_2"
-
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/round_corner"
-        android:src="@drawable/club_2"
-        android:scaleType="fitXY"
-        android:layout_marginLeft="20dp"
-
-
-        />
-
-    <ImageButton
-        android:id="@+id/club_3"
-
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/round_corner"
-        android:src="@drawable/club_3"
-        android:scaleType="fitXY"
-        android:layout_marginLeft="20dp"
-
-
-        />
-
-
-
-</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.15"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="80dp"
         android:padding="10dp"
         android:weightSum="3">
 
-        <ImageButton
-            android:id="@+id/club_4"
-            android:layout_width="0dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/club_1"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/round_corner"
-            android:src="@drawable/club_4"
-            android:scaleType="fitXY"
+            android:src="@drawable/club_1"
+
 
             />
 
-        <ImageButton
-            android:id="@+id/club_5"
+        <!--    <ImageButton-->
+        <!--        android:id="@+id/club_2"-->
 
-            android:layout_width="0dp"
+        <!--        android:layout_width="0dp"-->
+        <!--        android:layout_height="match_parent"-->
+        <!--        android:layout_weight="1"-->
+        <!--        android:background="@drawable/round_corner"-->
+        <!--        android:src="@drawable/club_2"-->
+        <!--        android:scaleType="fitXY"-->
+        <!--        android:layout_marginLeft="20dp"-->
+
+
+        <!--        />-->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/club_2"
+
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/round_corner"
-            android:src="@drawable/club_5"
-            android:scaleType="fitXY"
+            android:src="@drawable/club_3"
             android:layout_marginLeft="20dp"
 
 
             />
 
-        <ImageButton
-            android:id="@+id/club_6"
 
-            android:layout_width="0dp"
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.15"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:weightSum="3">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/club_3"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/round_corner"
+            android:src="@drawable/club_4"
+
+            />
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/club_5"-->
+
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:background="@drawable/round_corner"-->
+        <!--            android:src="@drawable/club_5"-->
+        <!--            android:scaleType="fitXY"-->
+        <!--            android:layout_marginLeft="20dp"-->
+
+
+        <!--            />-->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/club_4"
+
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:src="@drawable/club_6"
-            android:scaleType="fitXY"
             android:layout_marginLeft="20dp"
 
 
@@ -206,9 +200,9 @@ android:textFontWeight="500"
             android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-android:textSize="10sp"
+            android:textSize="10sp"
 
-            android:background="@drawable/round_corner"
+            android:background="@drawable/round_corner_4"
             android:drawableEnd="@drawable/ic_baseline_search_24"
             android:padding="10dp"
 
@@ -228,16 +222,16 @@ android:textSize="10sp"
             />
     </FrameLayout>
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rv"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginBottom="5dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_weight="2.8"
-    />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="2.8"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -286,8 +280,9 @@ android:textSize="10sp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"            android:background="@drawable/ic_outline_notifications_24"
+            android:layout_marginBottom="10dp"            android:background="@drawable/ic_baseline_school_24"
             ></ImageButton>
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"

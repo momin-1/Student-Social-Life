@@ -74,32 +74,41 @@ mauth = FirebaseAuth.getInstance();
 
     private  void siginUser(String email,String password) {
 
-        mauth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(Task<AuthResult> task) {
-                if(task.isSuccessful()){
+
+
+            mauth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
 //                    Toast.makeText(getContext(), "Signing in"+mauth.getCurrentUser().get, Toast.LENGTH_LONG).show();
-                   if(mauth.getCurrentUser().getUid().contains("LFBmnV7bLVPEeJ5W0BKdLReyeew2"))
-                   {
-                       Intent i = new Intent(getContext(), AdminHomePage.class);
-                       startActivity(i);
-                   }
-                   else {
+                        if (mauth.getCurrentUser().getUid().contains("LFBmnV7bLVPEeJ5W0BKdLReyeew2")) {
+                            Intent i = new Intent(getContext(), AdminHomePage.class);
+                            startActivity(i);
+                        } else {
+                            if(mauth.getCurrentUser().isEmailVerified()) {
+                                if (email.contains("@uowmail.edu.au"))
+                                    Toast.makeText(getContext(), "Signing in as Student", Toast.LENGTH_LONG).show();
+                                else if (email.contains("@uow.edu.au"))
+                                    Toast.makeText(getContext(), "Signing in as Professor", Toast.LENGTH_LONG).show();
 
-                       Intent i = new Intent(getContext(), HomeScreen.class);
-                       startActivity(i);
+                                Intent i = new Intent(getContext(), HomeScreen.class);
+                                startActivity(i);
+                            }
+                            else{
+                                Toast.makeText(getContext(), "Can't Verify Email", Toast.LENGTH_LONG).show();
 
-                   }
+                            }
+                        }
+                    }
                 }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(Exception e) {
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(Exception e) {
 
-                Toast.makeText(getContext(), "Couldn't Sign in "+e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Couldn't Sign in " + e.getMessage(), Toast.LENGTH_LONG).show();
 
-            }
-        });
+                }
+            });
 
     }
 

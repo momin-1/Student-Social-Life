@@ -157,7 +157,10 @@ Navbarfunctions();
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!this.getClass().getName().contains("Internships")){
 
+                    Intent i = new Intent(getApplicationContext(),InternshipsPage.class);
+                    startActivity(i);}
             }
         });
 
@@ -177,7 +180,7 @@ Navbarfunctions();
     private void filter(String text){
         ArrayList<SGModel> filteredstalls = new ArrayList<>();
         for(SGModel item: ls){
-            if(item.getLongname().toLowerCase().contains(text.toLowerCase())){
+            if( item.getName().toLowerCase().contains(text.toLowerCase())){
                 filteredstalls.add(item);
             }
         }

@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.40"
-        android:text="Join subject group chats"
+        android:text="List of Subjects"
         android:textSize="20sp"
         android:fontFamily="sans-serif-condensed-light"
         android:textStyle="italic"
@@ -79,7 +79,7 @@
         android:layout_height="match_parent"
 
 
-        android:background="@drawable/round_corner"
+        android:background="@drawable/round_corner_4"
         android:drawableEnd="@drawable/ic_baseline_search_24"
         android:padding="10dp"
 
@@ -157,7 +157,8 @@
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"            android:background="@drawable/ic_outline_notifications_24"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_baseline_school_24"
             ></ImageButton>
         <ImageButton
             android:layout_width="0dp"

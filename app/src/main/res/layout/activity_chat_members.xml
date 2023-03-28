@@ -46,7 +46,11 @@
         android:layout_width="300dp"
         android:layout_height="0dp"
         android:layout_weight="0.3"
-        android:text="4 online"
+        android:text=" Members"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:id="@+id/num"
 
 android:gravity="center"        />
 

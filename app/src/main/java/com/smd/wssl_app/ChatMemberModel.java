@@ -1,7 +1,7 @@
 package com.smd.wssl_app;
 
 public class ChatMemberModel {
-    String imgurl,name,title,status;
+    String imgurl,name,title,status,uid;
 
     public String getImgurl() {
         return imgurl;
@@ -35,10 +35,26 @@ public class ChatMemberModel {
         this.status = status;
     }
 
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
     public ChatMemberModel(String imgurl, String name, String title, String status) {
         this.imgurl = imgurl;
         this.name = name;
         this.title = title;
         this.status = status;
+    }
+
+    public ChatMemberModel(String imgurl, String name, String title, String status, String uid) {
+        this.imgurl = imgurl;
+        this.name = name;
+        this.title = title;
+        this.status = status;
+        this.uid = uid;
     }
 }

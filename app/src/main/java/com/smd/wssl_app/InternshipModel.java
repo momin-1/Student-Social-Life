@@ -1,13 +1,38 @@
 package com.smd.wssl_app;
 
 public class InternshipModel {
-    String name,pay,address,img,amount_of_users;
+    String name,pay,address,img,amount_of_users,link;
+
+    public InternshipModel(String name, String pay, String address,  String amount_of_users,String link) {
+        this.name = name;
+        this.pay = pay;
+        this.address = address;
+        this.amount_of_users = amount_of_users;
+        this.link = link;
+    }
 
     public InternshipModel(String name, String pay, String address,  String amount_of_users) {
         this.name = name;
         this.pay = pay;
         this.address = address;
         this.amount_of_users = amount_of_users;
+
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String getName() {

@@ -1,6 +1,8 @@
 package com.smd.wssl_app;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +40,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
 
 
         viewHolder.imageViewBackground.setText(mSliderItems.get(position).getImgUrl());
+        viewHolder.imageViewBackground.setTextColor(Color.WHITE);
 
     }
 

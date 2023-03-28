@@ -9,13 +9,23 @@ android:background="@drawable/round_corner"
     android:padding="10dp">
 
     <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Verification Link"
+        android:textSize="27sp" />
+
+    <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/textView1"
         android:gravity="center"
-        android:text="An OTP has been sent to your mail
+        android:text="An Email has been sent to your mail
         (to confirm if you are a current UOWD student/professor)"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <Button
         android:id="@+id/ok"
@@ -30,14 +40,15 @@ android:background="@drawable/round_corner"
         android:layout_marginBottom="10dp"
 
 
+
         android:layout_gravity="center"
         android:gravity="center"
-        android:backgroundTint="@color/gray"
+        android:backgroundTint="@color/blue"
         android:textColor="@color/white"
-
+android:elevation="20dp"
         android:text="OK"
         android:textStyle="bold"
-        app:cornerRadius = "40dp"
+        app:cornerRadius = "10dp"
         ></Button>
 
 </RelativeLayout>

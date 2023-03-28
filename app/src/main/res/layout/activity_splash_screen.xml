@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_color"
     tools:context=".SplashScreen">
 
     <ImageView
@@ -19,6 +20,7 @@
 
     <TextView
         android:layout_width="match_parent"
+        android:textColor="@color/white"
         android:layout_height="40dp"
         android:layout_below="@+id/image"
         android:layout_centerInParent="true"

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +26,9 @@ import com.google.firebase.firestore.SetOptions;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +49,20 @@ FirebaseFirestore db;
         clubs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("poos","clubs1");
+
+                try {
+//                    FileInputStream file = new FileInputStream(new File("F:/clubs.xlsx"));
+                    File file = new File(Environment.getExternalStorageDirectory(), "F:/clubs.xlsx");
+                    FileInputStream inputStream = new FileInputStream(file);
+
+                    Log.d("poos","clubs2");
+
+                } catch (FileNotFoundException e) {
+                    Log.d("poos",e.toString());
+                    e.printStackTrace();
+                }
+
                 Intent i = new Intent(HomeScreen.this,ClubsPage.class);
                 startActivity(i);
             }
@@ -121,7 +140,10 @@ FirebaseFirestore db;
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!this.getClass().getName().contains("Internships")){
 
+                    Intent i = new Intent(getApplicationContext(),InternshipsPage.class);
+                    startActivity(i);}
             }
         });
 
@@ -139,52 +161,10 @@ FirebaseFirestore db;
     }
 
 
-    private void status(String status){
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-
-// Get the document for the current user
-        DocumentReference userRef = db.collection("users").document(currentUser.getUid());
-
-// Create a map to hold the new fields
-        Map<String, Object> newData = new HashMap<>();
-        newData.put("status", status);
-
-
-// Add the new fields to the document
-        userRef.update(newData)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(Task<Void> task) {
-                        Toast.makeText(getApplicationContext(), "status:"+status, Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // The fields could not be added to the document
-                        Toast.makeText(getApplicationContext(),"aaaa"+ e, Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-
-
-    }
 
 
 
 
-    @Override
-    protected void onDestroy() {
-     //   status("offline");
-        super.onDestroy();
 
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-       // status("online");
-
-    }
 }

@@ -85,7 +85,7 @@ mauth = FirebaseAuth.getInstance();
     protected void onStart() {
         super.onStart();
         FirebaseUser user = mauth.getCurrentUser();
-        if(user!=null){
+        if(user!=null && user.isEmailVerified()){
             if(user.getUid().contains("LFBmnV7bLVPEeJ5W0BKdLReyeew2")){
 //            Toast.makeText(getApplicationContext(), user.getUid()+"already", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(SignUpLogin.this,AdminHomePage.class);

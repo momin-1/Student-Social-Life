@@ -23,14 +23,18 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Transaction;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -56,7 +60,7 @@ FirebaseAuth mauth;
     MessagesAdapter adapter;
 FirebaseFirestore db;
 List<ChatModel> ls;
-    String loggedname;
+    String loggedname,typee;
 
 
     @Override
@@ -81,6 +85,7 @@ db  = FirebaseFirestore.getInstance();
         sendmessage = findViewById(R.id.sendmessage);
         Bundle extras = getIntent().getExtras();
          loggedname = extras.getString("chat_name");
+         typee = extras.getString("type");
         chat_name = findViewById(R.id.chat_name);
         chat_name.setText(loggedname);
 
@@ -104,8 +109,8 @@ uid = mauth.getUid();
         rv.setAdapter(adapter);
         RecyclerView.LayoutManager lm=new LinearLayoutManager(ChatPage.this);
         rv.setLayoutManager(lm);
-        ls.add(new ChatModel("dh53omFeQGT80I1HHD7zPI1XeuV2","hello gee","https://firebasestorage.googleapis.com/v0/b/w-app-46ce9.appspot.com/o/Capture.PNG?alt=media&token=02143959-4f2a-4810-ab94-d9b223e056cb"));
-        ls.add(new ChatModel("dh53omFeQGT80I1HHD7zPIfXeuV2","okok",""));
+//        ls.add(new ChatModel("dh53omFeQGT80I1HHD7zPI1XeuV2","hello gee","https://firebasestorage.googleapis.com/v0/b/w-app-46ce9.appspot.com/o/Capture.PNG?alt=media&token=02143959-4f2a-4810-ab94-d9b223e056cb"));
+//        ls.add(new ChatModel("dh53omFeQGT80I1HHD7zPIfXeuV2","okok",""));
         updatelist();
         CollectionReference parentRef = db.collection("groups");
 
@@ -276,7 +281,10 @@ return img_url;
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!this.getClass().getName().contains("Internships")){
 
+                    Intent i = new Intent(getApplicationContext(),InternshipsPage.class);
+                    startActivity(i);}
             }
         });
 
@@ -336,6 +344,7 @@ return img_url;
 
                             // Document deleted successfully
                             Toast.makeText(getApplicationContext(), "Group Left Successfully", Toast.LENGTH_SHORT).show();
+                            decc(loggedname);
                             finish();
                         }
                     })
@@ -360,5 +369,167 @@ return img_url;
 
 
     }
+
+    private void status(String status){
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
+// Get the document for the current user
+        DocumentReference userRef = db.collection("users").document(currentUser.getUid());
+
+// Create a map to hold the new fields
+        Map<String, Object> newData = new HashMap<>();
+        newData.put("status", status);
+
+
+// Add the new fields to the document
+        userRef.update(newData)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(Task<Void> task) {
+                        Toast.makeText(getApplicationContext(), "status:"+status, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // The fields could not be added to the document
+                        Toast.makeText(getApplicationContext(),"aaaa"+ e, Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
+    }
+
+
+    private void decc(String title){
+        Log.d("opop",typee);
+        if(typee.equals("club")) {
+            Log.d("taggg", title);
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+            FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                    .build();
+            firestore.setFirestoreSettings(settings);
+
+            Query query = firestore.collection("clubs")
+                    .whereEqualTo("club_name", title);
+            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot querySnapshot = task.getResult();
+                        List<DocumentSnapshot> documents = querySnapshot.getDocuments();
+                        for (DocumentSnapshot document : documents) {
+                            DocumentReference documentRef = document.getReference();
+                            firestore.runTransaction(new Transaction.Function<Void>() {
+                                @Override
+                                public Void apply(Transaction transaction) throws FirebaseFirestoreException {
+                                    DocumentSnapshot snapshot = transaction.get(documentRef);
+                                    String fieldValue = snapshot.getString("members");
+                                    int fieldValueInt = Integer.parseInt(fieldValue);
+                                    fieldValueInt--;
+                                    fieldValue = Integer.toString(fieldValueInt);
+                                    transaction.update(documentRef, "members", fieldValue);
+                                    Log.d("firer", fieldValue);
+                                    Log.d("opop",
+                                            "cmonnn");
+
+                                    return null;
+                                }
+                            }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    // The transaction was successful.
+                                    Log.d("firer", "---YES");
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    // The transaction failed.
+                                    Log.d("firer", "---no");
+
+                                }
+                            });
+                        }
+                    } else {
+                        // The query failed.
+                        Log.d("firer", "---no");
+
+                    }
+                }
+            });
+        }
+        else  if(typee.equals("sg")) {
+            Log.d("taggg", title);
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+            FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                    .build();
+            firestore.setFirestoreSettings(settings);
+
+            Query query = firestore.collection("subject-groups")
+                    .whereEqualTo("name", title);
+            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot querySnapshot = task.getResult();
+                        List<DocumentSnapshot> documents = querySnapshot.getDocuments();
+                        for (DocumentSnapshot document : documents) {
+                            DocumentReference documentRef = document.getReference();
+                            firestore.runTransaction(new Transaction.Function<Void>() {
+                                @Override
+                                public Void apply(Transaction transaction) throws FirebaseFirestoreException {
+                                    DocumentSnapshot snapshot = transaction.get(documentRef);
+                                    String fieldValue = snapshot.getString("amount_of_users");
+                                    int fieldValueInt = Integer.parseInt(fieldValue);
+                                    fieldValueInt--;
+                                    fieldValue = Integer.toString(fieldValueInt);
+                                    transaction.update(documentRef, "amount_of_users", fieldValue);
+                                    Log.d("firer", fieldValue);
+                                    Log.d("opop",
+                                            "cmonnn");
+
+                                    return null;
+                                }
+                            }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    // The transaction was successful.
+                                    Log.d("firer", "---YES");
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    // The transaction failed.
+                                    Log.d("firer", "---no");
+
+                                }
+                            });
+                        }
+                    } else {
+                        // The query failed.
+                        Log.d("firer", "---no");
+
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+           status("offline");
+        super.onDestroy();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+         status("online");
+
+    }
+
 
 }

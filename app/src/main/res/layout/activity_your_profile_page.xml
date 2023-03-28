@@ -14,18 +14,17 @@
     android:layout_centerInParent="true"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:weightSum="8"
         android:background="@drawable/gradient_color"
         >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.80"
+        android:layout_height="80dp"
         android:weightSum="10"
+        android:id="@+id/topbar"
         >
         <ImageButton
             android:layout_width="0dp"
@@ -55,24 +54,28 @@
             android:background="@drawable/ic_baseline_logout_24"/>
     </LinearLayout>
     <View
-        android:layout_below="@+id/signin"
+        android:layout_below="@+id/topbar"
         android:layout_width="match_parent"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="0dp"
-        android:layout_height="0dp"
+        android:layout_height="3dp"
         android:layout_weight="0.02"
         android:id="@+id/line"
+
         android:background="@color/white"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="190dp"
         android:layout_gravity="center"
-        android:layout_height="0dp"
-android:minHeight="200dp"
-        android:layout_weight="1.5"
-        app:cardCornerRadius="30dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/line"
+
+android:id="@+id/img"
         app:cardBackgroundColor="@color/gray"
+
         android:layout_marginTop="20dp"
         android:layout_marginBottom="5dp"
         android:padding="10dp"
@@ -81,7 +84,7 @@ android:minHeight="200dp"
         <ImageView
             android:id="@+id/profilepic"
             android:layout_width="match_parent"
-
+android:adjustViewBounds="true"
             android:layout_height="match_parent"
             android:src="@mipmap/ic_launcher_round"
             android:background="@color/white"
@@ -89,62 +92,67 @@ android:minHeight="200dp"
             />
     </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/img"
 
-        android:layout_weight="0.4"
-        android:text="Peter Thiel"
-        android:gravity="center"
-        android:textSize="20sp"
-android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:focusedByDefault="false"
+            android:background="@null"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:focusedByDefault="false"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
 
-        android:background="@null"
-        android:fontFamily="sans-serif-medium"
-        android:textColor="@color/black"
+            android:text="Peter Thiel"
+            android:textColor="@color/white"
+            android:textSize="25sp"
 
-        />
+            />
 
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="0.2"
-        android:text="pgq371"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:fontFamily="sans-serif-medium"
-        android:textColor="@color/gray"
+        <TextView
+            android:id="@+id/uname"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/name"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
 
-        />
+            android:text="pgq371"
+            android:textColor="#A5A5A5"
+            android:textSize="12sp"
 
-    <TextView
+            />
 
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="0.5"
-        android:text="My Clubs"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:fontFamily="sans-serif-medium"
-        android:textColor="@color/gray"
+        <TextView
+            android:id="@+id/all_clubs"
 
-        />
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/uname"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="My Clubs"
+            android:textColor="#BCBCBC"
+            android:textSize="20sp"
+
+            />
 
     ]
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.1"
+        android:layout_height="150dp"
+
         android:orientation="horizontal"
         android:layout_margin="5dp"
         android:id="@+id/rvclubs"
+        android:layout_below="@+id/all_clubs"
+
 
 
         />
@@ -152,10 +160,11 @@ android:focusable="false"
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_height="200dp"
         android:background="@drawable/round_corner_2"
 app:cardCornerRadius="5dp"
+        android:layout_below="@+id/rvclubs"
+android:id="@+id/aboutmee"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"
         android:layout_marginRight="20dp"
@@ -178,7 +187,7 @@ app:cardCornerRadius="5dp"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginBottom="10dp"
-            android:text=" About Me"
+            android:text=" About Me &#38; Work Experience"
             android:drawableStart="@drawable/ic_baseline_assignment_me_24"
             android:gravity="center"
             android:layout_gravity="center"
@@ -216,10 +225,11 @@ much as connection as possible."
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3.5"
+            android:layout_height="300dp"
             android:background="@drawable/round_corner_2"
             app:cardCornerRadius="5dp"
+            android:layout_below="@+id/aboutmee"
+android:id="@+id/grps"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="20dp"
@@ -242,9 +252,10 @@ much as connection as possible."
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:layout_marginBottom="12dp"
-                    android:text="Groups"
+                    android:text="Subject Groups"
                     android:drawableStart="@drawable/ic_baseline_view_headline_24"
                     android:gravity="center"
+
                     android:layout_gravity="center"
                     android:textSize="18sp"
                     android:fontFamily="sans-serif-medium"
@@ -265,21 +276,77 @@ much as connection as possible."
 
 
         </androidx.cardview.widget.CardView>
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="100dp"
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/update"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/grps"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/gradient_color_2"
+            android:gravity="center"
             android:text="Update Profile"
+            android:textColor="@color/white"
+
+            />
+
+             <Button
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:text="Get Club Suggestions"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:id="@+id/update"
-            />
-        
+            android:id="@+id/ai"
+                 android:textColor="@color/blue"
+                 android:layout_centerHorizontal="true"
+                 android:layout_below="@+id/update"
+android:visibility="visible"
+                 android:textSize="10sp"
+                 />
+
+        <EditText
+            android:id="@+id/usernamee"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/ai"
+
+
+
+
+            android:background="@drawable/round_corner"
+            android:padding="10dp"
+            android:hint="Insta username"
+            android:visibility="visible"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            android:layout_below="@+id/usernamee"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+
+
+            android:background="@drawable/round_corner"
+            android:hint="password"
+            android:padding="10dp"
+            android:visibility="visible" />
+
        <TextView
            android:layout_width="match_parent"
-           android:layout_height="200dp"
+           android:layout_height="100dp"
+           android:layout_below="@+id/password"
            />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 
@@ -288,7 +355,8 @@ much as connection as possible."
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
         android:weightSum="5"
         android:orientation="horizontal"
         android:background="#ECECEC"
@@ -333,7 +401,7 @@ much as connection as possible."
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"            android:background="@drawable/ic_outline_notifications_24"
+            android:layout_marginBottom="10dp"            android:background="@drawable/ic_baseline_school_24"
             ></ImageButton>
         <ImageButton
             android:layout_width="0dp"

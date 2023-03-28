@@ -23,11 +23,11 @@ android:layout_alignParentEnd="true"
 
         android:text="time wefkjoweijfiowjfoewfnwoid2ui2iujn2id23iodnfun3ufi foiwejo finwoeforwfjforne"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:padding="8dp"
         android:layout_centerVertical="true"
 
-        android:gravity="center"
+        android:gravity="left"
         android:background="@drawable/oval_message_darkblue"
          />
 

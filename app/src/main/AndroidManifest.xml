@@ -9,12 +9,17 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_wssl"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_wssl"
         android:supportsRtl="true"
         android:theme="@style/Theme.WSSL_App"
         android:windowSoftInputMode="adjustPan">
+        <activity
+            android:name=".MemberProfile"
+            android:exported="false" />
         <activity
             android:name=".AddClubForm"
             android:exported="false" />
@@ -33,7 +38,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".YourProfilePage"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SubjectGroups"
             android:exported="false"
@@ -55,7 +61,9 @@
             android:exported="false" />
         <activity
             android:name=".GetStarted"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".SignInFragment"
             android:exported="false"
@@ -68,10 +76,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Welcome"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".SplashScreen"
             android:exported="true" />

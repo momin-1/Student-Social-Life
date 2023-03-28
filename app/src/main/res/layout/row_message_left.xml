@@ -29,13 +29,13 @@
         android:maxWidth="270dp"
         android:layout_height="wrap_content"
 android:layout_toRightOf="@+id/img"
-        android:text="time orne"
+        android:text="time orne okokwokdowjedfoiwjeiod qdowijojd"
 
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:padding="8dp"
         android:layout_centerVertical="true"
-        android:gravity="center"
+        android:gravity="left"
         android:background="@drawable/oval_message"
         />
 

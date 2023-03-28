@@ -73,6 +73,7 @@ public class AddClubForm extends AppCompatActivity {
         data.put("club_name", name.getText().toString());
         data.put("interest", interests.getText().toString());
         data.put("dp", filepathuri);
+        data.put("members", "0");
 
 
         db.collection("clubs")
@@ -105,6 +106,7 @@ public class AddClubForm extends AppCompatActivity {
         DocumentReference footballRef = groupsRef.document(customId);
 
         Map<String, Object> data2 = new HashMap<>();
+//        data2.put("members", "0");
 
 
 

@@ -55,6 +55,15 @@ if(!(ls.get(position).getImgurl().isEmpty()))
 else
     holder.img.setImageResource(R.mipmap.ic_launcher);
 
+holder.itemView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent i = new Intent(c,MemberProfile.class);
+        i.putExtra("uid",ls.get(position).getUid());
+        c.startActivity(i);
+    }
+});
+
 
     }
 

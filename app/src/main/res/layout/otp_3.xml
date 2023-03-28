@@ -27,19 +27,31 @@
         />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_below="@id/image"
         android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/image"
         android:gravity="center"
-        android:text="If you click the Accept button, you are considered to agree to the Terms of Service and Privacy Policy"
+        android:text="If you click the Accept button, you are considered to agree to the"
+
+        />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@id/text"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="Terms of Service and Privacy Policy"
+        android:textColor="@color/blue"
 
         />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_below="@+id/text"
+        android:layout_below="@+id/text2"
         android:orientation="horizontal"
         android:weightSum="2">
 
@@ -58,13 +70,13 @@
 
         android:layout_gravity="center"
         android:gravity="center"
-        android:backgroundTint="@color/gray"
+        android:backgroundTint="@color/blue"
         android:textColor="@color/white"
         android:textAllCaps="false"
 
         android:text="Accept"
         android:textStyle="bold"
-        app:cornerRadius = "40dp"
+        app:cornerRadius = "5dp"
         ></Button>
 
 
@@ -83,13 +95,13 @@
 
             android:layout_gravity="center"
             android:gravity="center"
-            android:backgroundTint="@color/gray"
+            android:backgroundTint="@color/red"
             android:textColor="@color/white"
 
             android:text="Reject"
             android:textAllCaps="false"
             android:textStyle="bold"
-            app:cornerRadius = "40dp"
+            app:cornerRadius = "5dp"
             ></Button>
 
 

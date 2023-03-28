@@ -22,8 +22,11 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Transaction;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.w3c.dom.Text;
@@ -39,6 +42,10 @@ public class SGAdapter extends RecyclerView.Adapter<SGAdapter.MyViewHolder> {
     List<SGModel> ls;
     Context c;
     FirebaseAuth mauth;
+    int numberOfDocuments =0;
+    HashMap<Integer, Boolean> buttonStates = new HashMap<>();
+
+
 
 
     public SGAdapter(List<SGModel> ls, Context c) {
@@ -61,8 +68,23 @@ public class SGAdapter extends RecyclerView.Adapter<SGAdapter.MyViewHolder> {
         holder.name.setText(ls.get(position).getName());
         holder.longname.setText(ls.get(position).getLongname());
         holder.no_of_members.setText(ls.get(position).getAmount_of_users());
-
         check(ls.get(position).getName(),holder);
+
+        Boolean isButtonGray = buttonStates.get(position);
+        if (isButtonGray == null) {
+            // the button state for this item has not been set yet, set it to false (not gray)
+            isButtonGray = false;
+            buttonStates.put(position, isButtonGray);
+        }
+
+        if (isButtonGray) {
+            holder.join.setBackgroundResource(R.drawable.gradient_color_gray);
+            holder.join.setText("Joined");
+
+        } else {
+            holder.join.setBackgroundResource(R.drawable.gradient_color_2);
+            holder.join.setText("Join");
+        }
 
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +92,7 @@ public class SGAdapter extends RecyclerView.Adapter<SGAdapter.MyViewHolder> {
                 if(holder.join.getText()=="Joined"){
                     Intent i = new Intent(c,ChatPage.class);
                     i.putExtra("chat_name",ls.get(position).getName());
+                    i.putExtra("type","sg");
                     c.startActivity(i);}
             }
         });
@@ -81,6 +104,8 @@ public class SGAdapter extends RecyclerView.Adapter<SGAdapter.MyViewHolder> {
 
                     Intent i = new Intent(c,ChatPage.class);
                     i.putExtra("chat_name",ls.get(position).getName());
+                    i.putExtra("type","sg");
+
                     c.startActivity(i);}
             }
         });
@@ -91,8 +116,15 @@ public class SGAdapter extends RecyclerView.Adapter<SGAdapter.MyViewHolder> {
                 if(holder.join.getText()!="Joined"){
                     //add user to club
                     getData(ls.get(position).getName().toString());
+
+                    buttonStates.put(position, true);
+                    // set the background color to gray
+                    holder.join.setBackgroundResource(R.drawable.gradient_color_gray);
                     holder.join.setText("Joined");
-                    holder.join.setBackgroundResource(R.color.gray);
+
+                    Log.d("taggg",ls.get(position).getName().toString());
+                    inc(ls.get(position).getName().toString());
+
                 }
 
             }
@@ -191,14 +223,14 @@ img = itemView.findViewById(R.id.profile_image);
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    if (task.getResult().isEmpty()) {
-
+                    if (!task.getResult().isEmpty()) {
+                        holder.join.setText("Joined");
+                        holder.join.setBackgroundResource(R.drawable.gradient_color_gray);
                         Log.d("TAG", "User ID not found in chatmembers collection");
 //                        Toast.makeText(c, "User not found", Toast.LENGTH_SHORT).show();
 
                     } else {
-                        holder.join.setText("Joined");
-                        holder.join.setBackgroundResource(R.color.gray);
+
                         Log.d("TAG", "User ID found in chatmembers collection");
 //                        Toast.makeText(c, "User found", Toast.LENGTH_SHORT).show();
 
@@ -209,4 +241,86 @@ img = itemView.findViewById(R.id.profile_image);
             }
         });
     }
+
+    public void incrementmembers(String grp){
+        // Get the Firestore instance
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+// Get a reference to the "finance_group" document
+        DocumentReference financeGroupRef = db.collection("groups").document(grp);
+
+// Get a reference to the "chatmembers" collection inside the "finance_group" document
+        CollectionReference chatMembersRef = financeGroupRef.collection("chatmembers");
+
+// Get the number of documents inside the "chatmembers" collection
+        chatMembersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                     numberOfDocuments = task.getResult().size();
+                    Log.d("TAG", "Number of documents inside 'chatmembers': " + numberOfDocuments);
+                } else {
+                    Log.e("TAG", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+
+    }
+
+    private void inc(String title){
+        Log.d("taggg",title);
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .build();
+        firestore.setFirestoreSettings(settings);
+
+        Query query = firestore.collection("subject-groups")
+                .whereEqualTo("name", title);
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    QuerySnapshot querySnapshot = task.getResult();
+                    List<DocumentSnapshot> documents = querySnapshot.getDocuments();
+                    for (DocumentSnapshot document : documents) {
+                        DocumentReference documentRef = document.getReference();
+                        firestore.runTransaction(new Transaction.Function<Void>() {
+                            @Override
+                            public Void apply(Transaction transaction) throws FirebaseFirestoreException {
+                                DocumentSnapshot snapshot = transaction.get(documentRef);
+                                String fieldValue = snapshot.getString("amount_of_users");
+                                int fieldValueInt = Integer.parseInt(fieldValue);
+                                fieldValueInt++;
+                                fieldValue = Integer.toString(fieldValueInt);
+                                transaction.update(documentRef, "amount_of_users", fieldValue);
+                                Log.d("firer",fieldValue);
+
+                                return null;
+                            }
+                        }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // The transaction was successful.
+                                Log.d("firer","---YES");
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // The transaction failed.
+                                Log.d("firer","---no");
+
+                            }
+                        });
+                    }
+                } else {
+                    // The query failed.
+                    Log.d("firer","---no");
+
+                }
+            }
+        });
+
+    }
+
+
+
 }

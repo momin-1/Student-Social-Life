@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class Welcome extends AppCompatActivity {
 
-    String url1 = "WELCOMING";
-    String url2 = "WELCOMING 2";
-    String url3 = "WELCOMNIG 3";
+    String url1 = "Unlock opportunities WSSL helps you unlock exclusive internship opportunities through our network. Find internships that best match your skillset and interests, so that you can take the next step in your career.\n";
+    String url2 = "Unlock opportunities WSSL helps you unlock exclusive internship opportunities through our network. Find internships that best match your skillset and interests, so that you can take the next step in your career.\n";
+    String url3 = "Unlock opportunities WSSL helps you unlock exclusive internship opportunities through our network. Find internships that best match your skillset and interests, so that you can take the next step in your career.\n";
 
     Button button;
 

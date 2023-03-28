@@ -44,6 +44,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:textSize="20sp"
+            android:textColor="@color/white"
             android:layout_marginLeft="3dp"
             android:fontFamily="sans-serif-thin"
             android:textFontWeight="900"
@@ -58,6 +59,7 @@ android:textStyle="bold"
                 android:gravity="center_vertical"
                 android:textSize="20sp"
                 android:layout_marginLeft="3dp"
+                android:textColor="@color/white"
                 android:fontFamily="sans-serif-thin"
                 android:textFontWeight="500"
                 android:textStyle="italic"
@@ -67,6 +69,7 @@ android:textStyle="bold"
 
         </LinearLayout>
             <ImageView
+                android:visibility="invisible"
                 android:layout_width="0dp"
                 android:layout_height="25dp"
                 android:id="@+id/status"

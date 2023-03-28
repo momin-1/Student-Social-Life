@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerHorizontal="true"
+android:background="@drawable/round_corner"
+
+    android:padding="10dp">
+
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Are you sure you want to sign out"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_below="@+id/textView"
+        android:layout_width="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+
+
+
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/white"
+android:elevation="20dp"
+        android:text="Confirm"
+        android:textStyle="bold"
+        app:cornerRadius = "10dp"
+        ></Button>
+
+</RelativeLayout>

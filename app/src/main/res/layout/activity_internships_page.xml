@@ -51,7 +51,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.40"
         android:text="What type of jobs are you looking for?"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:fontFamily="sans-serif-condensed-light"
         android:textStyle="italic"
         android:textFontWeight="500"
@@ -63,7 +63,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.28"
+        android:layout_weight="0.48"
         android:layout_marginTop="15dp"
         android:text="Categories"
         android:gravity="center"
@@ -71,13 +71,14 @@
         android:fontFamily="sans-serif-medium"
         android:textColor="@color/white"
         android:textFontWeight="500"
+        android:textSize="25sp"
 
         />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.15"
+        android:layout_weight="1.05"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginRight="20dp"
@@ -111,7 +112,7 @@
                 android:padding="0dp"
                 android:gravity="center"
                 android:fontFamily="sans-serif-condensed-light"
-                android:textColor="@color/black"
+                android:textColor="#C8C8C8"
                 android:textFontWeight="500"
 
                 />
@@ -147,7 +148,7 @@
                 android:padding="0dp"
                 android:gravity="center"
                 android:fontFamily="sans-serif-condensed-light"
-                android:textColor="@color/black"
+                android:textColor="#C8C8C8"
                 android:textFontWeight="500"
 
                 />
@@ -183,7 +184,7 @@
                 android:padding="0dp"
                 android:gravity="center"
                 android:fontFamily="sans-serif-condensed-light"
-                android:textColor="@color/black"
+                android:textColor="#C8C8C8"
                 android:textFontWeight="500"
 
                 />
@@ -197,7 +198,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.15"
+        android:layout_weight="1.05"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
 
@@ -232,7 +233,7 @@
                 android:padding="0dp"
                 android:gravity="center"
                 android:fontFamily="sans-serif-condensed-light"
-                android:textColor="@color/black"
+                android:textColor="#C8C8C8"
                 android:textFontWeight="500"
 
                 />
@@ -268,7 +269,7 @@
                 android:padding="0dp"
                 android:gravity="center"
                 android:fontFamily="sans-serif-condensed-light"
-                android:textColor="@color/black"
+                android:textColor="#C8C8C8"
                 android:textFontWeight="500"
 
                 />
@@ -304,7 +305,7 @@
                 android:padding="0dp"
                 android:gravity="center"
                 android:fontFamily="sans-serif-condensed-light"
-                android:textColor="@color/black"
+                android:textColor="#C8C8C8"
                 android:textFontWeight="500"
 
                 />
@@ -319,7 +320,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_weight="0.7"
+        android:layout_weight="0.6"
 
         android:minHeight="30dp"
         android:layout_height="0dp"
@@ -336,7 +337,7 @@
         android:textSize="12sp"
 
 
-        android:background="@drawable/round_corner"
+        android:background="@drawable/round_corner_4"
         android:drawableEnd="@drawable/ic_baseline_search_24"
         android:padding="10dp"
 
@@ -366,7 +367,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:layout_weight="2.8"
+        android:layout_weight="2.9"
         />
 
     <LinearLayout
@@ -374,6 +375,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.7"
         android:weightSum="5"
+
         android:orientation="horizontal"
         android:background="#ECECEC"
         >
@@ -416,7 +418,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"            android:background="@drawable/ic_outline_notifications_24"
+            android:layout_marginBottom="10dp"            android:background="@drawable/ic_baseline_school_24"
             ></ImageButton>
         <ImageButton
             android:layout_width="0dp"

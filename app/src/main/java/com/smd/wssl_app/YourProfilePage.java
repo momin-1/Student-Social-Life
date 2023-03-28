@@ -1,13 +1,20 @@
 package com.smd.wssl_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,11 +23,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.instagram4j.instagram4j.IGClient;
+import com.github.instagram4j.instagram4j.exceptions.IGLoginException;
+import com.github.instagram4j.instagram4j.responses.feed.FeedTimelineResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -37,30 +46,34 @@ import com.squareup.picasso.Picasso;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import javax.annotation.Nullable;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class YourProfilePage extends AppCompatActivity {
 FirebaseAuth mauth;
     ImageButton logout,back;
     ImageView profilepic;
-    Integer ii=0;
+    String jjk;
+    Integer ii=0;ArrayList<String> liked;
+    ArrayList<String> suggests;
+    int numCompleted = 0;
     Integer bol=0;
+    List<String> dps;
 
     RecyclerView rv;
-    Button update;
+    EditText u,p;
+    Button ai;
+    AppCompatButton update;
     List<ImageViewModel> ls;
 
     ImageViewAdapter adapter;
 TextView sgrv;
+TextView uname;
     EditText name, aboutme;
     ImageButton home,football,groups,notifications,profile;
     FirebaseFirestore db;
@@ -72,31 +85,84 @@ TextView sgrv;
        db = FirebaseFirestore.getInstance();
 
         setContentView(R.layout.activity_your_profile_page);
-
+dps=new ArrayList<>(Arrays.asList());
         mauth = FirebaseAuth.getInstance();
-        Navbarfunctions();
         logout = findViewById(R.id.logout);
+
+        Navbarfunctions();
+        suggestions();
+        u = findViewById(R.id.usernamee);
+        p = findViewById(R.id.password);
+        uname = findViewById(R.id.uname);
         sgrv = findViewById(R.id.SGrv);
         back = findViewById(R.id.back);
         update = findViewById(R.id.update);
+        ai = findViewById(R.id.ai);
         rv= findViewById(R.id.rvclubs);
 
         ls=new ArrayList<>();
 
-
+jjk = "";
 
         adapter=new ImageViewAdapter(ls,YourProfilePage.this);
         rv.setAdapter(adapter);
         RecyclerView.LayoutManager lm=new LinearLayoutManager(YourProfilePage.this,LinearLayoutManager.HORIZONTAL,false);
         rv.setLayoutManager(lm);
-      ls.add(new ImageViewModel("https://firebasestorage.googleapis.com/v0/b/w-app-46ce9.appspot.com/o/images%2Fimage%3A256102?alt=media&token=0e9cff61-998e-466f-a6a8-318be59e1bc3"));
-adapter.notifyDataSetChanged();
-getimages();
+//      ls.add(new ImageViewModel("https://firebasestorage.googleapis.com/v0/b/w-app-46ce9.appspot.com/o/images%2Fimage%3A256102?alt=media&token=0e9cff61-998e-466f-a6a8-318be59e1bc3"));
+//adapter.notifyDataSetChanged();
+
+checkclubs();
 getclubs();
 
 name = findViewById(R.id.name);
 aboutme  = findViewById(R.id.aboutme);
         getData();
+
+
+        ai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Wait while we fetch data", Toast.LENGTH_SHORT).show();
+                Handler handler = new Handler();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                         jjk = integrateAI();
+
+                        // post a message to the main thread's message queue when myFunction() is done
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                // execute your function on the main thread here
+                                if(!isFinishing())
+
+                                        if (jjk.equals("T"))
+                                            Toast.makeText(getApplicationContext(), "Enter Details", Toast.LENGTH_SHORT).show();
+
+                                   else if (jjk.equals("N"))
+                                        Toast.makeText(getApplicationContext(), "Logging Error", Toast.LENGTH_SHORT).show();
+
+
+                                      //  showCustomDialog(jjk);
+
+                            }
+                        });
+                    }
+                }).start();
+
+
+
+
+
+//                String jjk =integrateAI();
+//                android.os.SystemClock.sleep(20000);
+//                showCustomDialog(jjk);
+
+            }
+        });
+
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,10 +193,7 @@ aboutme  = findViewById(R.id.aboutme);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mauth.signOut();
-                Intent i =new Intent(getApplicationContext(),SignUpLogin.class);
-                startActivity(i);
-                finish();
+                showCustomDialog2();
             }
         });
         name = findViewById(R.id.name);
@@ -155,7 +218,25 @@ aboutme  = findViewById(R.id.aboutme);
                     // Document exists, retrieve data
                     String namee = documentSnapshot.getString("name");
                         String aboutmee = documentSnapshot.getString("aboutme");
+                        String una = documentSnapshot.getString("email");
                     name.setText(namee);
+                    uname.setText(una.substring(0, una.length() - 10));
+
+                    int iend = una.indexOf("@"); //this finds the first occurrence of "."
+//in string thus giving you the index of where it is in the string
+
+// Now iend can be -1, if lets say the string had no "." at all in it i.e. no "." is found.
+//So check and account for it.
+
+                    String subString;
+                    if (iend != -1)
+                    {
+                        subString= una.substring(0 , iend); //this will give abc
+                        uname.setText(subString);
+
+                    }
+
+
                     if(!aboutmee.isEmpty())
                     aboutme.setText(aboutmee);
                     else
@@ -240,7 +321,10 @@ aboutme  = findViewById(R.id.aboutme);
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!this.getClass().getName().contains("Internships")){
 
+                    Intent i = new Intent(getApplicationContext(),InternshipsPage.class);
+                    startActivity(i);}
             }
         });
 
@@ -273,7 +357,7 @@ aboutme  = findViewById(R.id.aboutme);
                                if(!img.isEmpty())
                                 Picasso.get().load(img).into(profilepic);
                                else
-                                   Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/w-app-46ce9.appspot.com/o/images%2Fimage%3A256102?alt=media&token=0e9cff61-998e-466f-a6a8-318be59e1bc3").into(profilepic);
+                                   Picasso.get().load(R.drawable.uow_logo).into(profilepic);
 
 
                             } else {
@@ -338,11 +422,14 @@ ArrayList<String> groupids = new ArrayList<>();
                                 if (innerTask.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : innerTask.getResult()) {
                                         String groupId = groupDocument.getId();
+
 //                                        groupids.add(groupId);
                                         // Do something with the group ID
-                                        Log.d("abd","aaa"+groupId);
+                                        Log.d("abdabd","aaa"+groupId);
 //                                        groupids.add(groupId);
+                                        if(!groupId.toLowerCase().contains("club"))
                                         sgrv.setText(sgrv.getText()+ groupId+"\n");
+                                        sgrv.setPaintFlags(sgrv.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
 
@@ -371,31 +458,273 @@ ArrayList<String> groupids = new ArrayList<>();
     }
 
 
-    private void getimages(){
+
+    private String integrateAI(){
+if(!u.getText().toString().isEmpty() && !p.getText().toString().isEmpty()){
+    String username = u.getText().toString();
+    String password = p.getText().toString();
+
+Log.d("uiuiui",username+"-11 11-"+password);
+
+//  Create a new Instagram client with the user's credentials
+                liked = new ArrayList<String>();
+                int i=0;
+                IGClient client = null;
+
+                try {
+                    client = IGClient.builder()
+                            .username(username)
+                            .password(password)
+                            .login();
+                } catch (IGLoginException e) {
+                    Log.d("logged","logger");
+                    e.printStackTrace();
+return "N";
+
+                }
+                Log.d("logged",client.toString());
+                for (FeedTimelineResponse response: client.getActions().timeline().feed()) {
+                    Log.d("sook",response.toString());
+//                   Log.d("sook",response.toString().substring(0,response.toString().indexOf("type1")));
+
+
+                    liked.add(response.toString());
+
+                    Log.d("ook2","num");
+                    i++;
+                    if(i==3)
+                        break;
+//                 for (String res :  (response.toString().split("' '"))){
+//                     Log.d("feedD",res);
+//                     if(res.startsWith("#"))
+//                         liked.add(res.substring(1));
+//
+//                 }
+
+                }
+                
+                String jjk="";
+//                Log.d("resullt","fsdf");
+                Log.d("resulter",liked.toString());
+                for(int k=0;k<liked.size();k++)
+                    for(int j=0;j<suggests.size();j++){
+                        if(liked.get(k).toLowerCase().contains(suggests.get(j)))
+                        {
+//                            Toast.makeText(getApplicationContext(), "Club Suggested:"+suggests.get(j)+" Club", Toast.LENGTH_SHORT).show();
+                        Log.d("cmonman","yes suggested"+j+liked.size());
+                        jjk = suggests.get(j);
+                        k=liked.size();
+                        break;
+                        }
+                    }
+
+
+return jjk;}
+else{
+    return "T";
+}
+    }
+
+    private void getimages(List<String> dpp){
 
 
         CollectionReference collectionRef = db.collection("clubs");
 
 
 
-        collectionRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                               if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        String fieldValue = document.getString("dp");
-                        // Do something with the field value
-                        ls.add(new ImageViewModel(fieldValue));
-                        adapter.notifyDataSetChanged();
-
+        collectionRef.whereIn("club_name", dps)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String fieldValue = document.getString("dp");
+                                // Do something with the field value
+                                ls.add(new ImageViewModel(fieldValue));
+                                adapter.notifyDataSetChanged();
+                            }
+                        } else {
+                            // Handle the error
+                        }
                     }
-                } else {
-                    // Handle the error
-                }
-            }
-        });
+                });
+
+
+
+
+//        collectionRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                               if (task.isSuccessful()) {
+//                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        String fieldValue = document.getString("dp");
+//                        // Do something with the field value
+//                        ls.add(new ImageViewModel(fieldValue));
+//                        adapter.notifyDataSetChanged();
+//
+//                    }
+//                } else {
+//                    // Handle the error
+//                }
+//            }
+//        });
 
     }
 
+
+    private void suggestions()
+    {
+        db = FirebaseFirestore.getInstance();
+        mauth = FirebaseAuth.getInstance();
+suggests = new ArrayList<>();
+        db.collection("clubs")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String[] splited = document.getString("club_name").split("\\s+");
+suggests.add(splited[0].toLowerCase());
+
+                            }
+                        } else {
+                            Log.d("fire", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+
+
+    }
+
+    private void showCustomDialog(String c) {
+        final AlertDialog dialogBuilder = new AlertDialog.Builder(YourProfilePage.this).create();
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.club_suggestion, null);
+        dialogBuilder.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+
+        Button button = dialogView.findViewById(R.id.ok);
+        TextView tv= dialogView.findViewById(R.id.textView);
+        if(c.isEmpty()){
+            tv.setText("Couldn't find any clubs for you :(");
+        }
+        if(!c.equals("") || !c.isEmpty() || !c.equals(" ") || !c.equals("N") || !c.equals("T") ) {
+            Log.d("uiuiui", "o"+c+"o");
+            tv.setText("You have been suggested a Club: " + c + " Club");
+        }else
+            tv.setText("Couldn't find any clubs for you :(");
+
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.show();
+
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogBuilder.dismiss();
+                Intent i =new Intent(getApplicationContext(),ClubsPage.class);
+                startActivity(i);
+
+            }
+        });
+
+
+
+    }
+
+    private void showCustomDialog2() {
+        final AlertDialog dialogBuilder = new AlertDialog.Builder(YourProfilePage.this).create();
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.logout_prompt, null);
+        dialogBuilder.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+
+        Button button = dialogView.findViewById(R.id.ok);
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.show();
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogBuilder.dismiss();
+                mauth.signOut();
+                Intent i =new Intent(getApplicationContext(),SignUpLogin.class);
+                startActivity(i);
+                finish();
+
+
+            }
+        });
+
+
+
+    }
+
+ public void checkclubs(){
+
+// Replace "groups" with the name of your top-level collection
+     CollectionReference groupsRef = db.collection("groups");
+
+// Replace "your_uid_value" with the UID value you want to query for
+     String uidValue = mauth.getUid();
+
+     groupsRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+         @Override
+         public void onSuccess(QuerySnapshot querySnapshot) {
+             int numIterations = querySnapshot.size();
+
+             for (DocumentSnapshot groupDocumentSnapshot : querySnapshot) {
+                 String groupId = groupDocumentSnapshot.getId();
+
+                 // Query the chatmembers subcollection of the current group
+                 CollectionReference chatMembersRef = groupDocumentSnapshot.getReference().collection("chatmembers");
+                 Query query = chatMembersRef.whereEqualTo("uid", uidValue);
+
+                 query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                     @Override
+                     public void onSuccess(QuerySnapshot querySnapshot) {
+                         for (DocumentSnapshot chatMemberDocumentSnapshot : querySnapshot) {
+                             String chatMemberId = groupDocumentSnapshot.getId();
+                             // Use the group ID and chat member ID as needed
+                             if(chatMemberId.toLowerCase().contains("club") && !dps.contains(chatMemberId)) {
+                                 dps.add(chatMemberId);
+                                 Log.d("abdulll", "done " + chatMemberId + ": ");
+
+                             }
+                         }
+                         numCompleted++;
+                         if (numCompleted == numIterations) {
+                             if(!dps.isEmpty())
+                             getimages(dps);
+                             else
+                                 rv.setVisibility(View.INVISIBLE);
+
+                         }
+
+
+
+                     }
+                 }).addOnFailureListener(new OnFailureListener() {
+                     @Override
+                     public void onFailure(@NonNull Exception e) {
+                         Log.e("TAG", "Error querying for chatmembers in group " + groupId + ": " + e);
+                     }
+                 });
+             }
+         }
+     }).addOnFailureListener(new OnFailureListener() {
+         @Override
+         public void onFailure(@NonNull Exception e) {
+             Log.e("TAG", "Error querying for groups: " + e);
+         }
+     });
+
+ }
 
 }

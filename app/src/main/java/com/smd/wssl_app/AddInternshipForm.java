@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class AddInternshipForm extends AppCompatActivity {
 
-    EditText title,type,salary,jobfamily,location,description;
+    EditText title,type,salary,jobfamily,location,description,link;
     Button add_internship;
     FirebaseAuth mauth;
     FirebaseFirestore db;
@@ -39,6 +39,7 @@ public class AddInternshipForm extends AppCompatActivity {
         location = findViewById(R.id.location);
         description = findViewById(R.id.description);
         add_internship = findViewById(R.id.add_internship);
+        link = findViewById(R.id.link);
 
         add_internship.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +61,7 @@ public class AddInternshipForm extends AppCompatActivity {
         data.put("job-family", jobfamily.getText().toString());
         data.put("location", location.getText().toString());
         data.put("description", description.getText().toString());
+        data.put("link", link.getText().toString());
         data.put("interested", "0");
 
         db.collection("internships")

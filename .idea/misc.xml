@@ -9,15 +9,21 @@
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/circle_black.xml" value="0.11851851851851852" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/custom_edittext.xml" value="0.215625" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/gradient_color.xml" value="0.165625" />
-        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/gradient_color_2.xml" value="0.9464285714285714" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/gradient_color_2.xml" value="0.16" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/gradient_color_3.xml" value="0.16979166666666667" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/gradient_color_gray.xml" value="0.14791666666666667" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.1361111111111111" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/ic_baseline_pin.xml" value="0.11458333333333333" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/ic_baseline_school_24.xml" value="0.14895833333333333" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/ic_round_home_24.xml" value="0.165625" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/oval_message.xml" value="0.11944444444444445" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/round_button.xml" value="0.16822916666666668" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/round_button_2.xml" value="0.17864583333333334" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/round_corner.xml" value="0.215625" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/round_corner_2.xml" value="0.16927083333333334" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/round_corner_3.xml" value="0.1" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/drawable/round_corner_4.xml" value="0.1359375" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/font/custom_font.xml" value="0.14739583333333334" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_add_club_form.xml" value="0.25" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_add_internship_form.xml" value="0.2" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_admin_home_page.xml" value="0.17" />
@@ -25,20 +31,23 @@
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_chat_page.xml" value="0.25" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_clubs_page.xml" value="0.2443820224719101" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_get_started.xml" value="0.16770833333333332" />
-        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_home_screen.xml" value="0.22" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_home_screen.xml" value="0.25" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_internship_category.xml" value="0.23427331887201736" />
-        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_internships_page.xml" value="0.25" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_internships_page.xml" value="0.2" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_main.xml" value="0.19947916666666668" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_member_profile.xml" value="0.17916666666666667" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_sign_in_fragment.xml" value="0.19947916666666668" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_sign_up.xml" value="0.15208333333333332" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_sign_up_login.xml" value="0.22" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_splash_screen.xml" value="0.18" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_subject_groups.xml" value="0.22" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_welcome.xml" value="0.18" />
-        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_your_profile_page.xml" value="0.1377840909090909" />
-        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/apply_internship.xml" value="0.15" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/activity_your_profile_page.xml" value="0.25" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/apply_internship.xml" value="0.18" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/club_suggestion.xml" value="0.1" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/image_view.xml" value="0.15" />
-        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/leave_chat.xml" value="0.19" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/leave_chat.xml" value="0.33" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/logout_prompt.xml" value="0.14739583333333334" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/otp_1.xml" value="0.22" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/otp_2.xml" value="0.19947916666666668" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/otp_3.xml" value="0.18" />
@@ -54,6 +63,7 @@
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/sign_in_fragment.xml" value="0.19947916666666668" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/sign_up_fragment.xml" value="0.25" />
         <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/slider_layout.xml" value="0.25" />
+        <entry key="..\:/SMD_Projects/WSSL_App/app/src/main/res/layout/terms.xml" value="0.18" />
       </map>
     </option>
   </component>

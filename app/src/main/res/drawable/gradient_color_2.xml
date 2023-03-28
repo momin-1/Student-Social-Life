@@ -4,16 +4,16 @@
     xmlns:android = "http://schemas.android.com/apk/res/android" >
 
     <corners
-        android:bottomLeftRadius="10dp"
-        android:bottomRightRadius="10dp"
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp" />
+        android:bottomLeftRadius="5dp"
+        android:bottomRightRadius="5dp"
+        android:topLeftRadius="5dp"
+        android:topRightRadius="5dp" />
 
     <gradient
 
-        android:startColor = "#055798"
-        android:centerColor = "#4C0788"
-        android:endColor = "#780077"
-        android:angle = "0"
+        android:startColor = "#061FBF"
+        android:centerColor = "#4E0C88"
+        android:endColor = "#AA0303"
+        android:angle = "270"
         android:type = "linear" />
 </shape>
